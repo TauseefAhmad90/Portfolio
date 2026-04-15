@@ -1,0 +1,534 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; /* Deep dark background */
+    color: #e5e5e5; /* Off-white text */
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    color: #f2e8cf; /* Soft gold/beige for headings */
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+/* --- Logo Animato (Pure CSS) --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    /* Evita che il testo venga selezionato per sbaglio */
+    user-select: none; 
+}
+
+/* Il Monogramma "TA" */
+.logo-ta {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: transparent;
+    /* Crea un effetto contorno trasparente */
+    -webkit-text-stroke: 1px #f2e8cf; 
+    position: relative;
+    letter-spacing: -2px;
+}
+
+/* L'animazione di riempimento del monogramma */
+.logo-ta::before {
+    content: 'TA';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #f2e8cf; /* Si riempie di oro */
+    width: 0%; /* Parte invisibile */
+    overflow: hidden;
+    /* Animazione fluida quando ci passi sopra */
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* Quando il mouse passa sul logo, la "TA" si colora */
+.logo-container:hover .logo-ta::before {
+    width: 100%; 
+}
+
+/* Il tuo nome completo */
+.logo-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #e5e5e5;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: baseline;
+}
+
+/* Il Punto Dorato Pulsante (Senza usare immagini!) */
+.logo-name::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #f2e8cf;
+    border-radius: 50%;
+    margin-left: 4px;
+    /* Richiama l'animazione creata qui sotto */
+    animation: pulseGlow 2s infinite; 
+}
+
+/* Animazione del battito/bagliore */
+@keyframes pulseGlow {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(242, 232, 207, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(242, 232, 207, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(242, 232, 207, 0);
+    }
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #a3a3a3;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f2e8cf;
+}
+
+.btn-contact {
+    background-color: #f2e8cf;
+    color: #0a0a0a !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Hero Section */
+/* --- Aggiornamento per la Sezione Hero in style.css --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* AGGIUNGI QUESTE RIGHE */
+    background-image: 
+        linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)), /* Sfondo scuro per far risaltare il testo */
+        url('images/home.png'); /* Il nome del tuo file immagine */
+    background-size: cover; /* L'immagine copre tutta la sezione */
+    background-position: center; /* L'immagine è centrata */
+    background-repeat: no-repeat;
+    
+    padding: 0 5%;
+}
+
+.hero-title {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title em {
+    font-style: italic;
+}
+
+.hero-subtitle {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    color: #888;
+    font-size: 1.1rem;
+}
+
+.scroll-down {
+    text-decoration: none;
+    color: #a3a3a3;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    border: 1px solid #333;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.scroll-down:hover {
+    border-color: #f2e8cf;
+    color: #f2e8cf;
+}
+/* --- Sezione Chi Sono --- */
+.about-section {
+    padding: 8rem 5%;
+    background-color: #0f0f0f; /* Un nero leggermente più chiaro per creare contrasto con la Hero */
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-title em {
+    font-style: italic;
+    color: #f2e8cf; /* Il colore dorato/beige */
+}
+
+.about-text p {
+    color: #a3a3a3;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.about-text strong {
+    color: #e5e5e5;
+    font-weight: 400;
+}
+
+.about-visual {
+    position: relative;
+}
+
+/* Stile per il riquadro della foto */
+/* Stile per l'immagine del profilo */
+/* --- Aggiornamento per l'immagine del profilo in style.css --- */
+.profile-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all 0.4s ease;
+    /* Rimuovi il filtro grayscale se l'immagine generata ha già i colori giusti */
+    /* filter: grayscale(20%) contrast(110%); */
+}
+
+.about-visual:hover .profile-image {
+    border-color: #f2e8cf;
+    /* filter: grayscale(0%) contrast(100%); */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-placeholder:hover {
+    border-color: #f2e8cf; /* Si illumina quando ci passi sopra col mouse */
+}
+
+/* Responsività per i telefoni */
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr; /* Fa andare il testo sopra e l'immagine sotto sui piccoli schermi */
+        text-align: center;
+    }
+}
+/* --- Animazioni allo Scorrimento (Scroll Reveal) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px); /* Starts slightly lower */
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Slides up into place */
+}
+
+/* Optional: Add a slight delay to the image so it appears right after the text */
+.delay-1 {
+    transition-delay: 0.2s;
+}
+/* --- Sezione Competenze --- */
+.skills-section {
+    padding: 8rem 5%;
+    background-color: #0a0a0a; /* Torna al nero profondo della Hero */
+}
+
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.skills-container .section-title {
+    margin-bottom: 4rem;
+}
+
+.skills-grid {
+    display: grid;
+    /* Crea automaticamente colonne responsive */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background: #111;
+    padding: 3rem 2rem;
+    border: 1px solid #222; /* Bordo grigio scuro */
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    text-align: left;
+}
+
+.skill-card:hover {
+    border-color: #f2e8cf; /* Il bordo diventa dorato al passaggio del mouse */
+    transform: translateY(-8px); /* La card si solleva leggermente */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #f2e8cf;
+}
+
+.skill-card h3 {
+    font-family: 'Playfair Display', serif; /* Font elegante per i titoli delle card */
+    font-size: 1.5rem;
+    color: #e5e5e5;
+    margin-bottom: 0.5rem;
+}
+
+.skill-card p {
+    color: #f2e8cf;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+}
+
+.skill-desc {
+    color: #888;
+    font-size: 1rem;
+    line-height: 1.6;
+    display: block;
+}
+
+/* Helper per far apparire la terza card per ultima */
+.delay-2 {
+    transition-delay: 0.4s;
+}
+/* --- Sezione Progetti (Selected Work) --- */
+.projects-section {
+    padding: 8rem 5%;
+    background-color: #0f0f0f; /* Leggero stacco dal nero della sezione precedente */
+}
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid #222;
+    padding-bottom: 1rem;
+}
+
+.github-link {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.github-link:hover {
+    color: #f2e8cf;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 3rem;
+}
+
+.project-card {
+    background: transparent;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+
+.project-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(to bottom right, #1a1a1a, #050505);
+    border: 1px solid #222;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #444;
+    font-size: 0.9rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+}
+
+/* Effetto overlay sull'immagine al passaggio del mouse */
+.project-card:hover .project-image::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(242, 232, 207, 0.05); /* Leggero riflesso dorato */
+    pointer-events: none;
+}
+
+.project-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    color: #e5e5e5;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.project-info p {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.tech-tags span {
+    font-size: 0.75rem;
+    color: #a3a3a3;
+    border: 1px solid #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Responsività per i telefoni */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Una colonna sui telefoni */
+    }
+    .projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+/* --- Sezione Contatti (Footer) --- */
+.contact-section {
+    padding: 8rem 5% 2rem 5%;
+    background-color: #050505; /* Il nero più scuro per la chiusura della pagina */
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto 6rem auto;
+}
+
+.contact-subtitle {
+    color: #a3a3a3;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Permette ai pulsanti di andare a capo sui telefoni */
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #e5e5e5;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    border-color: #f2e8cf;
+    color: #f2e8cf;
+    transform: translateY(-4px); /* Si solleva leggermente al passaggio del mouse */
+    box-shadow: 0 10px 20px rgba(242, 232, 207, 0.05); /* Leggero bagliore */
+}
+
+.contact-btn .icon {
+    font-size: 1.2rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid #1a1a1a;
+    padding-top: 2rem;
+    color: #555;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* Responsività per i telefoni */
+@media (max-width: 600px) {
+    .contact-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
