@@ -20,14 +20,29 @@ h1, h2, h3 {
 }
 
 /* Navigation */
-.navbar {
+/* --- Barra di Navigazione Sticky --- */
+nav {
+    /* Mantiene la barra incollata in cima */
+    position: sticky;
+    top: 0;
+    
+    /* Assicura che la barra stia SEMPRE sopra le immagini e il testo (livello superiore) */
+    z-index: 9999; 
+    
+    /* Effetto Vetro Scuro Premium */
+    background-color: rgba(10, 10, 10, 0.85); /* Nero leggermente trasparente */
+    backdrop-filter: blur(12px); /* Crea l'effetto sfocato per gli elementi che passano sotto */
+    -webkit-backdrop-filter: blur(12px); /* Supporto per Safari */
+    
+    /* Una linea dorata quasi invisibile per separare la navbar dal contenuto */
+    border-bottom: 1px solid rgba(242, 232, 207, 0.05); 
+    
+    /* Le tue regole esistenti per l'allineamento dovrebbero rimanere qui, ad esempio: */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 5%;
-    position: absolute;
-    width: 100%;
-    top: 0;
+    padding: 1.5rem 5%;
+    transition: all 0.3s ease;
 }
 
 /* --- Logo Animato (Pure CSS) --- */
@@ -282,6 +297,24 @@ h1, h2, h3 {
     padding: 8rem 5%;
     background-color: #0a0a0a; /* Torna al nero profondo della Hero */
 }
+/* --- Wrapper per rendere le Card cliccabili --- */
+/* --- Wrapper per rendere le Card cliccabili --- */
+.card-link-wrapper {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+    cursor: pointer; 
+    position: relative; /* Fondamentale */
+    z-index: 10; /* Questo porta il link "sopra" tutto il resto! */
+    height: 100%;
+}
+
+/* Assicurati che l'animazione hover funzioni anche sul link */
+.card-link-wrapper:hover .skill-card {
+    border-color: #f2e8cf;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(242, 232, 207, 0.05);
+}
 
 .skills-container {
     max-width: 1200px;
@@ -531,4 +564,88 @@ h1, h2, h3 {
         flex-direction: column;
         gap: 1rem;
     }
+}
+/* =========================================
+   STILI PER LE SOTTO-PAGINE (Frontend, Backend, Cloud)
+   ========================================= */
+
+.page-header {
+    padding: 12rem 5% 4rem 5%; /* Spazio extra in cima per la navbar sticky */
+    text-align: center;
+    background-color: #0a0a0a;
+}
+
+.page-header-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #f2e8cf; /* Diventa oro al passaggio del mouse */
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #e5e5e5;
+    margin-bottom: 1.5rem;
+}
+
+.page-title em {
+    color: #f2e8cf;
+    font-style: italic;
+}
+
+.page-subtitle {
+    color: #a3a3a3;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.tech-stack-section {
+    padding: 4rem 5% 8rem 5%;
+    background-color: #0f0f0f;
+    text-align: center;
+}
+
+.tech-stack-container h2 {
+    color: #e5e5e5;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.tech-tags-large {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tech-tag {
+    padding: 0.8rem 1.5rem;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 30px;
+    color: #f2e8cf;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    border-color: #f2e8cf;
+    background-color: rgba(242, 232, 207, 0.05);
+    transform: translateY(-3px);
 }
