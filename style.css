@@ -649,3 +649,60 @@ nav {
     background-color: rgba(242, 232, 207, 0.05);
     transform: translateY(-3px);
 }
+/* =========================================
+   OTTIMIZZAZIONE MOBILE (Smartphone e Tablet)
+   ========================================= */
+
+/* 1. Blocca lo scorrimento orizzontale (Niente scroll a destra/sinistra) */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 2. Assicura che le immagini non "rompano" mai i bordi */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 3. Regole specifiche per schermi piccoli (sotto i 768px) */
+@media (max-width: 768px) {
+    
+    /* Sistemiamo la Navbar: la impiliamo in modo ordinato */
+    nav {
+        flex-direction: column;
+        padding: 1rem 5%;
+        gap: 1rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        font-size: 0.8rem; /* Testo dei link più piccolo */
+    }
+
+    /* Sistemiamo il testo Gigante della Home */
+    h1, .hero-title {
+        font-size: 2.5rem !important; /* Molto più piccolo! */
+        line-height: 1.1;
+        word-wrap: break-word;
+    }
+
+    /* Riduciamo lo spazio laterale per sfruttare lo schermo */
+    section {
+        padding: 4rem 1rem !important;
+    }
+
+    /* Le griglie dei Progetti e delle Competenze diventano a 1 colonna */
+    .skills-grid, 
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+    
+    /* Riduciamo l'altezza delle immagini dei progetti per non occupare tutto lo schermo */
+    .project-image {
+        height: 200px; 
+    }
+}
