@@ -271,7 +271,7 @@
             </p>
 
             <div class="contact-links">
-                <a href="mailto:tuaemail@esempio.com" class="contact-btn">
+                <a href="mailto:tausifkheshgi317@gmail.com" class="contact-btn">
                     <span class="icon">✉️</span> Scrivimi un'Email
                 </a>
                 <a href="https://linkedin.com/in/tuo-profilo" target="_blank" class="contact-btn">
@@ -281,10 +281,56 @@
         </div>
 
         <div class="footer-bottom reveal delay-1">
-            <p>&copy; 2026 [Tuo Nome]. Sviluppato a Torino. Tutti i diritti riservati.</p>
+            <p>&copy; 2026 Tauseef Ahmad . Sviluppato a Torino. Tutti i diritti riservati.</p>
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Blocca il salto istantaneo
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return; // Ignora i link vuoti
+                
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return; // Ignora se la sezione non esiste
+
+                // Calcola le distanze (tenendo conto della navbar fissa in alto!)
+                const navbarHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                const startPosition = window.scrollY;
+                const distance = targetPosition - startPosition;
+                
+                // === IMPOSTA QUI LA VELOCITÀ ===
+                const duration = 1200; // 1200 millisecondi (1.2 secondi). Aumenta per rallentare.
+                // ===============================
+                
+                let start = null;
+
+                // Funzione di Easing (rende la partenza e l'arrivo morbidissimi)
+                function easeInOutCubic(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const progress = Math.min(timeElapsed / duration, 1); 
+                    
+                    const easeProgress = easeInOutCubic(progress);
+                    
+                    window.scrollTo(0, startPosition + distance * easeProgress);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            });
+        });
+    </script>
 </body>
 
 </html>
